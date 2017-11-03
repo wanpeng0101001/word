@@ -1,0 +1,116 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0px;
+  padding: 0px;
+  font: 14px "微软雅黑";
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+li {
+  list-style: none;
+}
+img {
+  display: block;
+}
+.subHead {
+  display: none;
+}
+#wrap {
+  height: 100%;
+  overflow: hidden;
+}
+#wrap canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: .5s opacity ;
+  z-index: 8;
+}
+#wrap .list {
+  width: 100%;
+  height: 100%;
+}
+#wrap .list .liNodes1 {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: url(../img/b.png) no-repeat;
+  background-size: 100% 100%;
+  z-index: 1;
+}
+#wrap .list .liNodes1 ul {
+  top: 65%;
+  left: 20%;
+  width: 200px;
+  position: absolute;
+}
+#wrap .list .liNodes1 ul li {
+  color: white;
+}
+#wrap .list .liNodes1 ul li p {
+  font-size: 16px;
+}
+#wrap .list .liNodes2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(../img/c.png) no-repeat;
+  background-size: 100% 100%;
+}
+#wrap .list .liNodes3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(../img/d.png) no-repeat;
+  background-size: 100% 100%;
+}
+#wrap .list .liNodes4 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(../img/e.png) no-repeat;
+  background-size: 100% 100%;
+}
+#wrap .list .liNodes5 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(../img/f.png) no-repeat;
+  background-size: 100% 100%;
+}
+#wrap .arrow {
+  position: absolute;
+  width: 90px;
+  height: 30px;
+  background: url(../img/arr.png) no-repeat;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -45px;
+  z-index: 7;
+}

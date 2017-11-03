@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width ,initial-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<canvas></canvas>
+			<ul class="list">
+				<li class="liNodes1">
+					<ul>
+						<li>
+							<p>曾经做为前端开发的你</p>
+							<p>解决PC兼容性而焦头烂额</p>
+						</li>
+						<li>
+							<p>而今</p>
+							<p>移动端H5应用疯狂来袭</p>
+						</li>
+						<li>
+							<p>你是否已准备充分</p>
+							<p>学习新技能</p>
+						</li>
+						<li>
+							<p>曾破茧成蝶、重获新生？</p>
+							
+						</li>
+					</ul>
+				</li>
+				<li class="liNodes2"></li>
+				<li class="liNodes3"></li>
+				<li class="liNodes4"></li>
+				<li class="liNodes5"></li>
+			</ul>
+			<ul class="arrow">
+				
+			</ul>
+			<ul class="music">
+				<audio src="img/Five More Hours (Derro X Chris Brown).mp3"></audio>
+			</ul>
+		</div>
+	</body>
+	<script src="jquery-2.1.3.min.js"></script>
+	<script src="transformCss.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="drag.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="tool.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+		document.addEventListener("touchstart",function(ev){
+			ev=ev||event;
+			ev.preventDefault();
+		});
+		
+		//rem适配
+		(function(){
+			var styleNode = document.createElement("style");
+			var width = document.documentElement.clientWidth/16;
+			styleNode.innerHTML="html{font-size:"+width+"px!important}";
+			document.body.appendChild(styleNode);
+		})();
+		
+		$(function(){
+			var $wrap =$("#wrap")
+			var $list = $("#wrap .list")
+			var $liNodes = $("#wrap .list>li")
+			
+			
+			//手指的初始值
+			/*var startp.left = event.clientX;
+			var startp.top = event.clientY;
+			*/
+			//滑动元素的初始值
+			var eleY = 0;
+			var startp = 0;
+			
+			
+			$liNodes.on("touchstart",function(event){
+				var touch = event.changedTouches[0];
+				//元素初始位置
+				eleY = $liNodes.offsetTop;
+				//手指初始位置
+				startY = touch.clientY;
+			});
+			$liNodes.on("touchmove",function(event){
+				var touch = event.changedTouches[0];
+				//手指结束位置
+				var endY = touch.clientY;
+				//手指距离差
+				var disY = endY - startY;
+				//元素最终位置
+				$liNodes.style.top = disY + eleY + "px"
+			})
+			
+			
+			
+	
+			gua();
+			function gua(){
+				var oc = document.querySelector("#wrap canvas");
+			if(oc.getContext){
+				oc.width = document.documentElement.clientWidth;
+				oc.height = document.documentElement.clientHeight;
+				var ctx=oc.getContext("2d");
+				var img = new Image();
+				img.src="img/a.png";
+				img.onload=function(){
+					draw(this);
+				}
+			}
+			
+			
+			function draw(img){
+				ctx.drawImage(img,0,0,oc.width,oc.height);
+				
+				oc.addEventListener("touchstart",function(ev){
+					ev = ev||event;
+					var touchC = ev.changedTouches[0];
+					var x = touchC.clientX;
+					var y = touchC.clientY;
+					ctx.globalCompositeOperation="destination-out";
+					ctx.lineWidth=40;
+					ctx.lineCap="round";
+					ctx.lineJoin="round";
+					
+					ctx.beginPath();
+					ctx.moveTo(x,y);
+					ctx.lineTo(x+1,y+1);
+					ctx.stroke();
+				})
+				
+				oc.addEventListener("touchmove",function(ev){
+					ev = ev||event;
+					var touchC = ev.changedTouches[0];
+					var x = touchC.clientX;
+					var y = touchC.clientY;
+					ctx.lineTo(x,y);
+					ctx.stroke();
+				})
+				
+				oc.addEventListener("touchend",function(ev){
+					ev = ev||event;
+					var touchC = ev.changedTouches[0];
+					
+					var imgData = ctx.getImageData(0,0,oc.width,oc.height);
+					var allPx = imgData.width*imgData.height;
+					var flag =0;
+					for(var i=0;i<allPx;i++){
+						if(imgData.data[4*i+3] === 0){
+							flag++;
+						}
+					}
+					
+					if(flag >= allPx/2){
+						oc.style.opacity=0;
+					}
+					
+					oc.addEventListener("transitionend",function(){
+						this.remove();
+					})
+				})
+			}
+			
+			}
+			});	
+	</script>
+</html>

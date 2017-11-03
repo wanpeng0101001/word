@@ -1,0 +1,97 @@
+@import "comment/reset";
+@import "comment/comment";
+
+#wrap{
+    height: 100%;
+    overflow: hidden;
+    canvas{
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition:.5s opacity ;
+        z-index: 8;
+    }
+    
+    .list{
+        width: 100%;
+        height: 100%;
+        .liNodes1{
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background: url(../img/b.png) no-repeat;
+            background-size:100% 100%;
+            z-index: 1;
+            ul{
+                top: 65%;
+                left: 20%;
+                width: 200px;
+                position: absolute;
+                
+                li{
+                    color: white;
+                    
+                    p{
+                        font-size: 16px;
+                    }
+                }
+                
+            }
+        }
+        .liNodes2{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(../img/c.png) no-repeat;
+            background-size:100% 100%;
+            
+        }
+        .liNodes3{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(../img/d.png) no-repeat;
+            background-size:100% 100%;
+            
+        }
+        .liNodes4{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(../img/e.png) no-repeat;
+            background-size:100% 100%;
+            
+            
+        }
+        .liNodes5{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(../img/f.png) no-repeat;
+            background-size:100% 100%;
+            
+            
+        }
+    }
+    .arrow{
+        position: absolute;
+        width: 90px;
+        height: 30px;
+        background: url(../img/arr.png) no-repeat;
+        bottom: 20px;
+        left: 50%;
+        margin-left: -45px;
+        z-index: 7;
+        
+    }
+}
